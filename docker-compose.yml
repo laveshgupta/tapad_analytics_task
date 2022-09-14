@@ -1,0 +1,26 @@
+services:
+  analyticsserver:
+    build: .
+    expose:
+      - '5000'
+    depends_on:
+      - redis
+  redis:
+    image: redis:6.2.7
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass ORQXAYLE
+    volumes:
+      - ./redis_data:/data
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - analyticsserver
+    ports:
+      - "8080:8080"
+volumes:
+  redis_data:
+    driver: local

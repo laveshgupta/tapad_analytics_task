@@ -1,0 +1,17 @@
+{
+    "redis": {
+        "max_conn": 20,
+        "host": "redis",
+        "port": "6379",
+        "database": 0,
+        "password": "ORQXAYLE"
+    },
+    "logging": {
+        "level": "DEBUG",
+        "log_file": "tapad_analytics_task.log"
+    },
+    "flask": {
+        "host": "0.0.0.0",
+        "port": 5000
+    }
+}
